@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{%block head%}
+<link href = "/static/css/background.css" rel="stylesheet" type = "text/css"/>
+<style>
+    .flex {
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+    }
+    h1 {
+        margin: 0px 0px 0px 0px;
+        font: normal normal 300 50px Montserrat;
+        color: #FFFFFF;
+    }
+    h2 {
+        margin: 0px 0px 0px 0px;
+        font: normal normal 300 40px Montserrat;
+        color: #FFFFFF;
+    }
+</style>
+{%endblock%}
+{%block title%}Home{%endblock%}
+{%block body%}
+<div class = "main flex">
+    <h1>
+        Hang Tight We're Building This Page
+    </h1>
+    <h2>
+        Brick by Brick
+    </h2>
+    <img style = "height:50%;" src= "/static/images/build.svg" />
+    <div class = "overlay">
+
+    </div>
+    
+     <img class = "background-image" src = "/static/images/seattle.jpg"/>
+</div>
+
+{%endblock%}

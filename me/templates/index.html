@@ -1,12 +1,78 @@
 {% extends "layout.html" %}
 {%block head%}
+<link href = "/static/css/background.css" rel="stylesheet" type = "text/css"/>
+<style>
+    .meat {
+        background-color: white;
+        height:60%;
+        width:60%;
+    }
+    .flex {
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+    }
+    .bar{
+        display:flex;
+        height:8rem;
+        width:100%;
+        justify-content: space-around;
+    }
+    .bar a {
+        height:100%;
+    }
+    .bar a img {
+        height:100%;
+    }
+    .last {
+        border-radius: 50%;
+        overflow:hidden;
+    }
+    h1 {
+        margin:0px 0px 0px 0px;
+        font: normal normal normal 42px Montserrat;
+        padding:0px 20px 2px 20px;
+        border-bottom:2px solid #707070;
+        color: #525252;
+    }
+    h2 {
+        margin:0px 0px 0px 0px;
+        font: normal normal normal 30px Montserrat;
+        color: #525252;
+    }
+</style>
 {%endblock%}
 {%block title%}Home{%endblock%}
 {%block body%}
-<div>
+<div class = "main flex">
+    <div class = "meat flex">
+        <div class = "last flex">
+            <img src = "/static/images/beesknees.jpg" />
+        </div>
+        <h1>
+            Ryan Heise
+        </h1>
+        <h2>
+            CS Student @ Purdue
+        </h2>
+        <div class = "bar">
+            <a class = "epic" href = "https://github.com/rfheise">    
+                <img src = "/static/images/github.png" />
+            </a>
+            <a href = "mailto:heise4@purdue.edu" class = "epic">
+                <img src = "/static/images/email.png" />
+            </a>
+            <a class = "epic" href = "https://www.linkedin.com/in/ryanfheise/">
+                <img src = "/static/images/linkedin.png" /> 
+            </a>
+        </div>
+    </div>
+    <div class = "overlay">
 
+    </div>
+    
+     <img class = "background-image" src = "/static/images/new-york.jpg"/>
 </div>
-<div class = "background">
-<img class = "background image"/>
-</div>
+
 {%endblock%}
