@@ -71,10 +71,21 @@
         height:400px;
         max-width:100%;
     }
+    .epic {
+        display:flex;
+        flex-direction:row;
+        justify-content: center;
+    }
+    .img-propic {
+        margin-right:50px;
+    }
     @media only screen and (max-width: 700px) {
         .background-image {
             width:auto;
             height:100%;
+        }
+        .nav-mobile-blank {
+            display:none;
         }
         .main {
             overflow:hidden;
@@ -90,6 +101,14 @@
         .heading-text{
             padding: 10px 0px 10px 0px;
         }
+        .nav-mobile {
+            position:fixed;
+            padding-top: 100px;
+            z-index: 2;
+        }
+        /* .navbar {
+            z-index:2;
+        } */
         h1 {
             font-size: 25px;
         }
@@ -99,6 +118,13 @@
         .post {
             min-width:80%;
             max-width:90%;
+        }
+        .epic {
+            flex-direction: column;
+            align-items: center;
+        }
+        .img-propic {
+            margin: 0px 0px 0px 0px;
         }
     }
     
@@ -114,8 +140,9 @@
     {%for post in posts%}
     <div class = "post">
         <div class = "heading">
-            <img src = "/static/images/beesknees.jpg"  class = "img-propic"/>
             <div>
+                <div class = "epic">
+                    <img src = "/static/images/beesknees.jpg"  class = "img-propic"/>
                 <div class = "heading-text">
                     <h1>
                         Ryan Heise
@@ -124,6 +151,7 @@
                         {{post.date}}
                     </h2>
                     <div></div>
+                </div>
                 </div>
                 {%if post.media_type == "video" %}
                     <video class = "media" controls>

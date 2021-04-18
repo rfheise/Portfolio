@@ -12,8 +12,25 @@ class Post(models.Model):
         ("","blank")
     ],blank = True,default = "")
     link = models.TextField(blank = True, default = "")
-    # def format_media(self):
-    #     return f"""<video height="400" controls>
-    #             <source src="{self.media.url}" type="video/mp4">
-    #             An Error Has Occured Loading Video
-    #             </video>"""
+
+    def __str__(self):
+        return f"{self.media_type}-{self.caption}"
+
+class Link(models.Model):
+    link = models.TextField()
+    short = models.TextField()
+    
+    def __str__(self):
+        return f"https://ryanfheise.com/{self.short}"
+
+class FileUpload(models.Model):
+    media = models.FileField(upload_to="files")
+    route = models.TextField()
+    
+    def __str__(self):
+        return f"https://ryanfheise.com/files/{self.route}"
+    
+def handler404(request, exception, template_name="404.html"):
+    response = render_to_response(template_name)
+    response.status_code = 404
+    return response
