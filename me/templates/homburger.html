@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {%block head%}
-<link href = "/static/css/background.css" rel="stylesheet" type = "text/css"/>
+<link href = "/static/css/background.css?v=1.01" rel="stylesheet" type = "text/css"/>
 <style>
 .flex {
         display:flex;
@@ -8,20 +8,140 @@
         align-items: center;
         justify-content: center;
     }
+    .overlay {
+        position:fixed;
+    }
+    .background-image {
+        position:fixed;
+    }
+    .navbar {
+        position:fixed;
+        background-color:white;
+        z-index: 3;
+    }
+    .main {
+        flex:1;
+        min-height:100%;
+        height:auto;
+        padding-top:150px;
+        position:absolute;
+    }
+    h1 {
+        font: normal normal normal 20px Montserrat serif;
+        color:white;
+        margin: 0px 0px 0px 0px;
+    }
+    h2 {
+        font: normal normal normal 17px Montserrat serif;
+        color:white;
+        margin: 0px 0px 0px 0px;
+    }
+    h3 {
+        font: normal normal normal 20px Montserrat serif;
+        color:white;
+        margin: 0px 0px 0px 0px; 
+    }
+    .heading {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+        padding-bottom:10px;
+        width:80%;
+    }
+    .img-propic {
+        border-radius: 250px;
+        height:75px;
+    }
+    .post {
+        width:auto;
+        max-width:80%;
+        min-width:40%;
+        display:flex;
+        flex-direction:column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        padding-bottom:25px;
+    }
+    .heading-text {
+        padding:20px 0px 20px 0px;
+    }
+    .media {
+        height:400px;
+        max-width:100%;
+    }
+    @media only screen and (max-width: 700px) {
+        .background-image {
+            width:auto;
+            height:100%;
+        }
+        .main {
+            overflow:hidden;
+        }
+        .heading {
+            flex-direction:column;
+            align-items: center;
+        }
+        .img-propic {
+            width:75px;
+            height:75px;
+        }
+        .heading-text{
+            padding: 10px 0px 10px 0px;
+        }
+        h1 {
+            font-size: 25px;
+        }
+        h2 {
+            font-size:18px;
+        }
+        .post {
+            min-width:80%;
+            max-width:90%;
+        }
+    }
+    
 </style>
 {%endblock%}
-{%block title%}Home{%endblock%}
+{%block title%}Homburger{%endblock%}
 {%block body%}
-<div class = "main flex">
-    <video height="800" controls>
-        <source src="/static/images/monkee.mp4" type="video/mp4">
-        Video of MONKEE.
-    </video>
-    <div class = "overlay">
+<img class = "background-image" src = "/static/images/la.jpg"/>
+<div class = "overlay">
 
+</div>
+<div class = "main flex">
+    {%for post in posts%}
+    <div class = "post">
+        <div class = "heading">
+            <img src = "/static/images/beesknees.jpg"  class = "img-propic"/>
+            <div>
+                <div class = "heading-text">
+                    <h1>
+                        Ryan Heise
+                    </h1>
+                    <h2>
+                        {{post.date}}
+                    </h2>
+                    <div></div>
+                </div>
+                {%if post.media_type == "video" %}
+                    <video class = "media" controls>
+                    <source src="{{post.media.url}}" type="video/mp4">
+                    An Error Has Occured Loading Video
+                    </video>
+                {%elif post.media_type == "image" %}
+                    <img src = "{{post.media.url}}" class = "media" />
+                {%endif%}
+                <h3>
+                    {{post.caption}}
+                 </h3>
+            </div>
+            
+        </div>
+        
     </div>
-    
-     <img class = "background-image" src = "/static/images/sanfran.jpg"/>
+    {%endfor%}
 </div>
 
 {%endblock%}

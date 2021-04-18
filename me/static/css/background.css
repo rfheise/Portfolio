@@ -1,12 +1,9 @@
-body {
-    width:100%;
-}
+
 .main {
     flex:1;
     width:100%;
     position: relative;
-    display:flex;
-    flex-direction: column;
+    height:100%;
 }
 .overlay {
     background-color: rgba(0,0,0,.51);

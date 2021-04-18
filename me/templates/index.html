@@ -1,10 +1,13 @@
 {% extends "layout.html" %}
 {%block head%}
-<link href = "/static/css/background.css" rel="stylesheet" type = "text/css"/>
+<link href = "/static/css/background.css?v=1.01" rel="stylesheet" type = "text/css"/>
 <style>
     .meat {
         background-color: white;
-        height:60%;
+        max-height:90%;
+        min-height:60%;
+        padding-top:5px;
+        height:auto;
         width:60%;
     }
     .flex {
@@ -31,15 +34,28 @@
     }
     h1 {
         margin:0px 0px 0px 0px;
-        font: normal normal normal 42px Montserrat;
+        font: normal normal normal 42px Montserrat serif;
         padding:0px 20px 2px 20px;
         border-bottom:2px solid #707070;
         color: #525252;
     }
     h2 {
         margin:0px 0px 0px 0px;
-        font: normal normal normal 30px Montserrat;
+        font: normal normal normal 30px Montserrat serif;
         color: #525252;
+    }
+    @media only screen and (max-width: 700px) {
+        .background-image {
+            width:auto;
+            height:100%;
+        }
+        .meat {
+            width:100%;
+            text-align:center;
+        }
+        .main {
+            overflow:hidden;
+        }
     }
 </style>
 {%endblock%}
