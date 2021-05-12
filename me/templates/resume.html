@@ -22,8 +22,9 @@
         height:50%;
         max-width:100%;
     }
-    .main {
-        text-align: center;
+    .resume {
+        width:90%;
+        height:90%;
     }
     @media only screen and (max-width: 700px) {
         .background-image {
@@ -42,24 +43,23 @@
         .build {
             width:90%;
         }
+        .resume {
+            width:95%;
+        }
     }
 </style>
 {%endblock%}
-{%block title%}TODO{%endblock%}
+{%block title%}Resume{%endblock%}
 {%block body%}
 
 <div class = "main flex">
-    <h1>
-        Hang Tight We're Building This Page
-    </h1>
-    <h2>
-        Brick by Brick
-    </h2>
-    <img class = "build" src= "/static/images/build.svg" />
+    <iframe src = "/static/resume.pdf?v=1.02" class = "resume">
+
+    </iframe>
     <div class = "overlay">
 
     </div>
-    <img class = "background-image" src = "/static/images/seattle.jpg"/>
+    <img class = "background-image" src = "/static/images/sanfran.jpg"/>
 
      
 </div>

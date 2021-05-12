@@ -6,7 +6,6 @@
         display:flex;
         flex-direction:column;
         align-items: center;
-        justify-content: center;
     }
     h1 {
         margin: 0px 0px 0px 0px;
@@ -48,14 +47,18 @@
 {%block title%}TODO{%endblock%}
 {%block body%}
 
-<div class = "main flex">
-    <h1>
-        Hang Tight We're Building This Page
-    </h1>
-    <h2>
-        Brick by Brick
-    </h2>
-    <img class = "build" src= "/static/images/build.svg" />
+<div class = "main flex" >
+    <a href = "/encrypt" style = "color:#71c6ff;">
+        <h1 style = "padding-top:50px;">
+            Click to Encrypt An Image
+        </h1>
+    </a>
+    <a href = "/decrypt" style = "color:#71c6ff;">
+        <h1 style = "padding-top:50px;">
+            Click to Decrypt An Image
+        </h1>
+    </a>
+    
     <div class = "overlay">
 
     </div>

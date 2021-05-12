@@ -6,7 +6,6 @@
         display:flex;
         flex-direction:column;
         align-items: center;
-        justify-content: center;
     }
     h1 {
         margin: 0px 0px 0px 0px;
@@ -48,14 +47,19 @@
 {%block title%}TODO{%endblock%}
 {%block body%}
 
-<div class = "main flex">
-    <h1>
-        Hang Tight We're Building This Page
+<div class = "main flex" >
+    <h1 style = "padding-top:50px;">
+        Encrypt An Image
     </h1>
-    <h2>
-        Brick by Brick
-    </h2>
-    <img class = "build" src= "/static/images/build.svg" />
+    <h2 style = "padding-bottom:50px;">
+        Upload it Here
+    </h2 >
+    <form style = "color:#71c6ff;" action = "/encrypt" method = "post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <input type = "text" name = "string" placeholder= "enter text to encrypt" />
+        <input type = "file" name = "planet" accept = "image/png,image/bmp,image/jpg,image/jpeg" />
+        <button type = "submit">Submit</button>
+    </form>
     <div class = "overlay">
 
     </div>

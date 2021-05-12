@@ -134,30 +134,40 @@
             <a href = "/construction" >
                 Projects
             </a>
-            <a  href = "/construction">
+            <a  href = "/blog">
                 Blog
             </a>
-            <a href = "/construction" >
+            <a href = "/resume" >
                 Resume
             </a>
             <a href = "{% url 'homburger' %}">
                 Homburger
             </a>
+            {%for link in links%}
+            <a href = "{{link.link}}">
+                {{link.short}}
+            </a>
+            {%endfor%}
             <div class = "cage"></div>
         </div>
         <div class = "nav-mobile" style = "display:none;" id = "mobile-nav">
             <a href = "/construction" >
                 Projects
             </a>
-            <a  href = "/construction">
+            <a href = "/blog">
                 Blog
             </a>
-            <a href = "/construction" >
+            <a href = "/resume" >
                 Resume
             </a>
             <a href = "{% url 'homburger' %}">
                 Homburger
             </a>
+            {%for link in links%}
+            <a href = "{{link.link}}">
+                {{link.short}}
+            </a>
+            {%endfor%}
         </div>
         <div class ="nav-mobile-blank" style = "display:none;" id = "blank-overlay">
 

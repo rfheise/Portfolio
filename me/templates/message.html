@@ -132,6 +132,9 @@
         color: #3498DB;
         text-decoration: none;
     }
+    h1 {
+        color:#71c6ff;
+    }
 </style>
 {%endblock%}
 {%block title%}Homburger{%endblock%}
@@ -141,43 +144,9 @@
 
 </div>
 <div class = "main flex">
-    {%for post in posts%}
-    <div class = "post">
-        <div class = "heading">
-            <div>
-                
-                <div class = "epic">
-                    <img src = "/static/images/beesknees.jpg"  class = "img-propic"/>
-                <div class = "heading-text">
-                    <h1>
-                        Ryan Heise
-                    </h1>
-                    <h2>
-                        {{post.date}}
-                    </h2>
-                    <div></div>
-                </div>
-                </div>
-                <h3>
-                    {{post.caption}}
-                 </h3>
-                {%if post.media_type == "video" %}
-                    <video class = "media" controls>
-                    <source src="{{post.media.url}}" type="video/mp4">
-                    An Error Has Occured Loading Video
-                    </video>
-                {%elif post.media_type == "image" %}
-                    <img src = "{{post.media.url}}" class = "media" />
-                {%elif post.media_type == "link" %}
-                    <a class = "link" href = {{post.link}}>{{post.link_short}}</a>
-                {%endif%}
-                
-            </div>
-            
-        </div>
-        
-    </div>
-    {%endfor%}
+    <h1 style = "text-align:center;width:90%;">
+        {{message}}
+    </h1>
 </div>
 
 {%endblock%}

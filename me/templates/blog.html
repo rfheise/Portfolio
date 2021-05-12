@@ -13,6 +13,9 @@
         font: normal normal 300 50px Montserrat;
         color: #FFFFFF;
     }
+    .main {
+        text-align:center;
+    }
     h2 {
         margin: 0px 0px 0px 0px;
         font: normal normal 300 40px Montserrat;
@@ -22,8 +25,8 @@
         height:50%;
         max-width:100%;
     }
-    .main {
-        text-align: center;
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.25);
     }
     @media only screen and (max-width: 700px) {
         .background-image {
@@ -45,21 +48,21 @@
     }
 </style>
 {%endblock%}
-{%block title%}TODO{%endblock%}
+{%block title%}Blog{%endblock%}
 {%block body%}
 
 <div class = "main flex">
     <h1>
-        Hang Tight We're Building This Page
+        No Blog Posts Yet
     </h1>
     <h2>
-        Brick by Brick
+        Check Back Shortly
     </h2>
-    <img class = "build" src= "/static/images/build.svg" />
+    <img class = "build" src= "/static/images/blog.svg" />
     <div class = "overlay">
 
     </div>
-    <img class = "background-image" src = "/static/images/seattle.jpg"/>
+    <img class = "background-image" src = "/static/images/chicago.jpg"/>
 
      
 </div>
