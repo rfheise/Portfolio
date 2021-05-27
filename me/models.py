@@ -1,6 +1,8 @@
 from typing import ContextManager
 from django.db import models
 from django.contrib.auth.hashers import make_password
+from django.utils import timezone
+from django.contrib.auth.models import User
 # Create your models here.
 class Post(models.Model):
     caption = models.TextField(blank = True, default = "")
@@ -31,13 +33,25 @@ class FileManager(models.Manager):
 class FileUpload(models.Model):
     media = models.FileField(upload_to="files")
     route = models.TextField()
+    objects = FileManager()
     def __str__(self):
         return f"https://ryanfheise.com/files/{self.route}"
     def delete(self, using=None, keep_parents=False):
         if self.media:
             self.media.delete()
         super().delete(using=using, keep_parents=keep_parents)
-
+class MLB(models.Model):
+    team = models.TextField()
+    out = models.BooleanField(default = False)
+    winner = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, null = True, default = "")
+    def __str__(self):
+        return self.team
+class Last(models.Model):
+    team = models.ForeignKey(MLB,on_delete=models.CASCADE)
+    date = models.DateTimeField(default = timezone.now)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    def __str__(self):
+        return f"{self.user} {self.team}"
 # class HiddenFile(models.Model):
 #     media = models.TextField()
 #     route = models.TextField()
@@ -68,3 +82,5 @@ def handler404(request, exception, template_name="404.html"):
     response = render_to_response(template_name)
     response.status_code = 404
     return response
+
+

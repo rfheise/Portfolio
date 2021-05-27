@@ -54,7 +54,7 @@
     <h2 style = "padding-bottom:50px;">
         Upload it Here
     </h2 >
-    <form style = "color:#71c6ff" action = "/decrypt" method = "post" enctype="multipart/form-data">
+    <form style = "color:#71c6ff" action = {%if file%}"/decrypt_file" {%else%}"/decrypt"{%endif%} method = "post" enctype="multipart/form-data">
         {%csrf_token%}
         <input type = "file" name = "planet" accept = "image/bmp"/>
         <button type = "submit">Submit</button>

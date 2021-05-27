@@ -11,7 +11,9 @@ urlpatterns = [
     path("blog", views.server("blog.html"), name = "blog"),
     path("decrypt",image.decrypt, name = "decryptor"),
     path("encrypt",image.encrypt, name = "decryptor"),
+    path("decrypt_file", image.decrypt_file, name = "file decrypt"),
     path("choose", views.server("choose.html"), name = "chooser"),
+    path("mlb",views.mlb, name = "mlb"),
     #must go last as it is a catch all
     path("<str:link_name>",views.link, name = "linker"),
 ]

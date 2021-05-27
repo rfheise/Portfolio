@@ -1,0 +1,166 @@
+{% extends "layout.html" %}
+{%block head%}
+<link href = "/static/css/background.css?v=1.01" rel="stylesheet" type = "text/css"/>
+<style>
+.flex {
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+    }
+    .overlay {
+        position:fixed;
+    }
+    .background-image {
+        position:fixed;
+    }
+    .navbar {
+        position:fixed;
+        background-color:white;
+        z-index: 3;
+    }
+    .main {
+        flex:1;
+        min-height:100%;
+        height:auto;
+        padding-top:150px;
+        position:absolute;
+    }
+    h1 {
+        font: normal normal normal 20px Montserrat serif;
+        color:white;
+        margin: 0px 0px 0px 0px;
+    }
+    h2 {
+        font: normal normal normal 17px Montserrat serif;
+        color:white;
+        margin: 0px 0px 0px 0px;
+    }
+    h3 {
+        font: normal normal normal 20px Montserrat serif;
+        color:white;
+        margin: 0px 0px 0px 0px; 
+    }
+    .heading {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+        padding-bottom:10px;
+        width:80%;
+    }
+    .img-propic {
+        border-radius: 250px;
+        height:75px;
+    }
+    .post {
+        width:auto;
+        max-width:80%;
+        min-width:40%;
+        display:flex;
+        flex-direction:column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        padding-bottom:25px;
+    }
+    .heading-text {
+        padding:20px 0px 20px 0px;
+    }
+    .media {
+        height:400px;
+        max-width:100%;
+    }
+    .epic {
+        display:flex;
+        flex-direction:row;
+        justify-content: center;
+    }
+    .img-propic {
+        margin-right:50px;
+    }
+    @media only screen and (max-width: 700px) {
+        .background-image {
+            width:auto;
+            height:100%;
+        }
+        .nav-mobile-blank {
+            display:none;
+        }
+        .main {
+            overflow:hidden;
+        }
+        .heading {
+            flex-direction:column;
+            align-items: center;
+        }
+        .img-propic {
+            width:75px;
+            height:75px;
+        }
+        .heading-text{
+            padding: 10px 0px 10px 0px;
+        }
+        .nav-mobile {
+            position:fixed;
+            padding-top: 100px;
+            z-index: 2;
+        }
+        /* .navbar {
+            z-index:2;
+        } */
+        h1 {
+            font-size: 25px;
+        }
+        h2 {
+            font-size:18px;
+        }
+        .post {
+            min-width:80%;
+            max-width:90%;
+        }
+        .epic {
+            flex-direction: column;
+            align-items: center;
+        }
+        .img-propic {
+            margin: 0px 0px 0px 0px;
+        }
+    }
+    .link {
+        font: normal normal normal 1.25rem 'Merriweather', serif;
+        color: #3498DB;
+        text-decoration: none;
+    }
+    h1 {
+        color:#71c6ff;
+    }
+</style>
+{%endblock%}
+{%block title%}Homburger{%endblock%}
+{%block body%}
+<img class = "background-image" src = "/static/images/la.jpg"/>
+<div class = "overlay">
+
+</div>
+<div class = "main flex">
+    <h1>
+        Your Wins {{score}}
+    </h1>
+    <h1>
+        Total Games Played {{total}}
+    </h1>
+    <h1 style = "text-align:center;width:90%;">
+        Current Selection:{{team}}
+    </h1>
+    <h2>
+        Previous Picks
+    </h2>
+    {%for team in last %} 
+    <h1>
+        {{team}}
+    </h1>
+    {%endfor%}
+</div>
+
+{%endblock%}
