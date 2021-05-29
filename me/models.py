@@ -24,6 +24,7 @@ class Link(models.Model):
     link = models.TextField()
     short = models.TextField()
     show = models.BooleanField(default = False)
+    count = models.IntegerField(default = 0)
     def __str__(self):
         return f"https://ryanfheise.com/{self.short}"
 class FileManager(models.Manager):

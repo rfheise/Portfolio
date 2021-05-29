@@ -16,6 +16,8 @@ def homburger(request):
 
 def link(request,link_name):
     link = get_object_or_404(Link, short__iexact=link_name)
+    link.count += 1 
+    link.save()
     return redirect(link.link)
 
 def file_server(request,file_route):
