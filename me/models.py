@@ -25,6 +25,7 @@ class Link(models.Model):
     short = models.TextField()
     show = models.BooleanField(default = False)
     count = models.IntegerField(default = 0)
+    authenticate = models.BooleanField(default = False)
     def __str__(self):
         return f"https://ryanfheise.com/{self.short}"
 class FileManager(models.Manager):
@@ -84,4 +85,6 @@ def handler404(request, exception, template_name="404.html"):
     response.status_code = 404
     return response
 
-
+class Meme(models.Model):
+    image = models.ImageField(upload_to="memes")
+    caption = models.TextField(blank = True, default = "")

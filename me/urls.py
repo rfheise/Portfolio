@@ -3,6 +3,7 @@ from . import views
 from . import image
 urlpatterns = [
     path("",views.server("index.html"), name = "index"),
+    path("epicMemes",views.server("template_builder/memer.html"),name = "memer"),
     path("construction", views.server("construction.html")),
     path("homburger", views.homburger, name = "homburger"),
     path("files/<str:file_route>",views.file_server, name = "file_server"),

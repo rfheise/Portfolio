@@ -51,6 +51,4 @@ def mlb(request):
 #     else:
 #         return render(request,"pfile.html")
         
-
-
     

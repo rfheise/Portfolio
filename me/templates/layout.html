@@ -144,8 +144,10 @@
                 Homburger
             </a>
             {%for link in links%}
-            <a href = "{{link.link}}">
+            <a href = "/{{link.short}}">
+                {%if not link.authenticate or request.user.is_authenticated %}
                 {{link.short}}
+                {%endif%}
             </a>
             {%endfor%}
             <div class = "cage"></div>
@@ -164,8 +166,10 @@
                 Homburger
             </a>
             {%for link in links%}
-            <a href = "{{link.link}}">
+            <a href = "/{{link.short}}">
+                {%if not link.authenticate or request.user.is_authenticated %}
                 {{link.short}}
+                {%endif%}
             </a>
             {%endfor%}
         </div>
