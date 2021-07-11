@@ -1,4 +1,4 @@
-
+import React from 'react'
 import '../../css/meme.css'
 
 export interface Meme {
@@ -7,7 +7,7 @@ export interface Meme {
     caption:string,
 }
 
-export default function MemeDisplay(props:Meme) {
+function MemeDisplay(props:Meme) {
     return (
         <div className = "meme">
         <img className = "img" src = {props.image} alt = {props.caption} />
@@ -17,3 +17,5 @@ export default function MemeDisplay(props:Meme) {
         </div>
     )
 }
+
+export default React.memo(MemeDisplay)

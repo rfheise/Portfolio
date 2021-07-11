@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = ')c=-o$($)=llsl=+$3n-c!e6b^f(#t%sbns^i-wlp41n9^rn__'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-# ALLOWED_HOSTS = ['ryanfheise.com','www.ryanfheise.com']
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['ryanfheise.com','www.ryanfheise.com']
+# ALLOWED_HOSTS = ['127.0.0.1']
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
@@ -35,10 +35,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 # CORS_ORIGIN_ALLOW_ALL= False
-CORS_ORIGIN_WHITELIST=[ 
-    'http://localhost:3000',
-    'http://127.0.0.1:3000'
- ]
+# CORS_ORIGIN_WHITELIST=[ 
+#     'http://localhost:3000',
+#     'http://127.0.0.1:3000'
+#  ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
+    # 'corsheaders',
     'me.apps.MeConfig'
 ]
 
@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'web.urls'

@@ -11,8 +11,7 @@ import {
 import { linkSync } from 'fs';
 import API from './api/api';
 interface Link {
-  show:boolean,
-  link:string
+  short:string
 }
 function App() {
   const [menu, setMenu] = useState<boolean>(true);
@@ -38,23 +37,23 @@ function App() {
     
     <div>
     <div className = "navbar">
-      <img onClick = {flipper} src = "http://127.0.0.1:8000/static/images/hamburger-menu.png" className = "homburger-menu" style = {menuStyle} id = "menu"/>
-      <img onClick = {flipper} src = "http://127.0.0.1:8000/static/images/x.png" className = "homburger-menu" style = {xStyle} id = "x"/>
+      <img onClick = {flipper} src = {API.generateURL("/static/images/hamburger-menu.png")} className = "homburger-menu" style = {menuStyle} id = "menu"/>
+      <img onClick = {flipper} src = {API.generateURL("/static/images/x.png")} className = "homburger-menu" style = {xStyle} id = "x"/>
       <div className = "header-nav">
           <a href = "/" >
               127.0.0.1
           </a>
       </div>
-      <a href = "http://127.0.0.1:8000/construction" >
+      <a href = {API.generateURL("/construction")} >
           Projects
       </a>
-      <a  href = "http://127.0.0.1:8000/blog">
+      <a  href = {API.generateURL("/blog")}>
           Blog
       </a>
-      <a href = "http://127.0.0.1:8000/resume" >
+      <a href = {API.generateURL("/resume")} >
           Resume
       </a>
-      <a href = "http://127.0.0.1:8000/homburger">
+      <a href = {API.generateURL("/homburger")}>
           Homburger
       </a>
       {links.map(link => (
@@ -65,16 +64,16 @@ function App() {
       <div className = "cage"></div>
   </div>
   <div className = "nav-mobile" style = {xStyle} id = "mobile-nav">
-      <a href = "http://127.0.0.1:8000/construction" >
+      <a href = {API.generateURL("/construction")} >
           Projects
       </a>
-      <a href = "http://127.0.0.1:8000/blog">
+      <a href = {API.generateURL("/blog")}>
           Blog
       </a>
-      <a href = "http://127.0.0.1:8000/resume" >
+      <a href = {API.generateURL("/resume")} >
           Resume
       </a>
-      <a href = "http://127.0.0.1:8000/homburger">
+      <a href = {API.generateURL("/homburger")}>
           Homburger
       </a>
       {links.map(link => (
@@ -85,7 +84,7 @@ function App() {
   </div>
   <div className ="nav-mobile-blank" style = {xStyle} id = "blank-overlay">
   </div>
-    <Router>
+    <Router basename = "/react">
       <Switch>
           <Route exact path="/meme">
             <Memes />

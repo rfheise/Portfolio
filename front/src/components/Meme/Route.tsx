@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import API from '../../api/api'
 import MemeDisplay, {Meme} from './MemeDisplay'
 import '../../css/meme.css'
+import Background from '../General/Background'
 import '../../css/background-react.css'
-export default function Memes() {
+function Memes() {
     const [memes, setMemes] = useState<Meme[]>([])
 
     useEffect(function() {
@@ -15,16 +16,8 @@ export default function Memes() {
     },[])
 
     return (
-        <div className = "overlay-parent">
-        <title>Dank Memez</title>
-        <div className = "main-overlay">
-            <div className = "overlay">
+       <Background title = "Dank Memes"  image = {API.generateURL("/static/images/houston.jpg")} >
 
-            </div>
-            <div className = "background">
-                <img className = "background-img" src = {API.generateURL("/static/images/houston.jpg")} alt = "houston" />
-            </div>
-            <div className ="main">
                 <h1>
                     CS Memes
                 </h1>
@@ -36,10 +29,7 @@ export default function Memes() {
                     })}
                     
                 </div>
-            </div>
-            
-        </div>
-        
-    </div>
+        </Background>
     )
 }
+export default React.memo(Memes)
