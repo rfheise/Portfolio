@@ -8,10 +8,11 @@ import {
   Route,
   // Link
 } from "react-router-dom";
-import { linkSync } from 'fs';
+// import { linkSync } from 'fs';
 import API from './api/api';
 interface Link {
   short:string
+  id:number,
 }
 function App() {
   const [menu, setMenu] = useState<boolean>(true);
@@ -19,6 +20,9 @@ function App() {
   useEffect(function() {
     (async function() {
       let result = await API.queryJson({route:"links"})
+      for(let i = 0; i < result.length; i++) {
+        result[i].id = i;
+      }
       setLinks(result)
     })()
   },[]) 
@@ -37,8 +41,8 @@ function App() {
     
     <div>
     <div className = "navbar">
-      <img onClick = {flipper} src = {API.generateURL("/static/images/hamburger-menu.png")} className = "homburger-menu" style = {menuStyle} id = "menu"/>
-      <img onClick = {flipper} src = {API.generateURL("/static/images/x.png")} className = "homburger-menu" style = {xStyle} id = "x"/>
+      <img onClick = {flipper} src = {API.generateURL("/static/images/hamburger-menu.png")} className = "homburger-menu" style = {menuStyle} id = "menu" alt = "menu" />
+      <img onClick = {flipper} src = {API.generateURL("/static/images/x.png")} className = "homburger-menu" style = {xStyle} id = "x" alt = "close menu"/>
       <div className = "header-nav">
           <a href = "/" >
               127.0.0.1
@@ -57,7 +61,7 @@ function App() {
           Homburger
       </a>
       {links.map(link => (
-         <a href = {API.generateURL(`/${link.short}`)}>
+         <a key = {link.id} href = {API.generateURL(`/${link.short}`)}>
          {link.short}
       </a>
       ))}
@@ -77,7 +81,7 @@ function App() {
           Homburger
       </a>
       {links.map(link => (
-         <a href = {API.generateURL(`/${link.short}`)}>
+         <a key = {link.id} href = {API.generateURL(`/${link.short}`)}>
          {link.short}
       </a>
       ))}

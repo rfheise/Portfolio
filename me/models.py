@@ -89,3 +89,6 @@ class Meme(models.Model):
     image = models.ImageField(upload_to="memes")
     caption = models.TextField(blank = True, default = "")
     date = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return self.caption
