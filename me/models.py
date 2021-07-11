@@ -88,3 +88,4 @@ def handler404(request, exception, template_name="404.html"):
 class Meme(models.Model):
     image = models.ImageField(upload_to="memes")
     caption = models.TextField(blank = True, default = "")
+    date = models.DateTimeField(default=timezone.now)

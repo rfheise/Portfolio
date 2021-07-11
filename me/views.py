@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
-from .models import Post,Link,FileUpload, MLB, Last
+from .models import Post,Link,FileUpload, MLB, Last, Meme
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from random import randint
 from django.contrib.auth.models import User
 
@@ -16,6 +16,8 @@ def homburger(request):
 
 def link(request,link_name):
     link = get_object_or_404(Link, short__iexact=link_name)
+    if link.authenticate and not request.user.is_authenticated:
+        raise Http404()
     link.count += 1 
     link.save()
     return redirect(link.link)
@@ -51,4 +53,7 @@ def mlb(request):
 #     else:
 #         return render(request,"pfile.html")
         
-    
+def reactRoute(request, route):
+    react = "http://localhost:3000/"
+    return redirect(f"{react}{route}")
+

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{%block title%}{%endblock%}</title>
-    <link rel = 'icon' href = "%PUBLIC_URL%/static/images/favicon.ico?1.03" type = "image/x-icon"/>
+
+    <link rel = 'icon' href = "http://127.0.0.1:8000/static/images/favicon.ico?1.03" type = "image/x-icon"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Ubuntu&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
@@ -124,59 +124,7 @@
 </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div class = "navbar">
-      <img onclick = "flipper()" src = "/static/images/hamburger-menu.png" class = "homburger-menu" id = "menu"/>
-      <img onclick = "flipper()" src = "/static/images/x.png" class = "homburger-menu" style = "display:none;" id = "x"/>
-      <div class = "header-nav">
-          <a href = "/" >
-              127.0.0.1
-          </a>
-      </div>
-      <a href = "http://127.0.0.1:8000/construction" >
-          Projects
-      </a>
-      <a  href = "/blog">
-          Blog
-      </a>
-      <a href = "/resume" >
-          Resume
-      </a>
-      <a href = "/homburger">
-          Homburger
-      </a>
-      <!-- {%for link in links%}
-      <a href = "/{{link.short}}">
-          {%if not link.authenticate or request.user.is_authenticated %}
-          {{link.short}}
-          {%endif%}
-      </a>
-      {%endfor%} -->
-      <div class = "cage"></div>
-  </div>
-  <div class = "nav-mobile" style = "display:none;" id = "mobile-nav">
-      <a href = "/construction" >
-          Projects
-      </a>
-      <a href = "/blog">
-          Blog
-      </a>
-      <a href = "/resume" >
-          Resume
-      </a>
-      <a href = "/homburger">
-          Homburger
-      </a>
-      <!-- {%for link in links%}
-      <a href = "/{{link.short}}">
-          {%if not link.authenticate or request.user.is_authenticated %}
-          {{link.short}}
-          {%endif%}
-      </a>
-      {%endfor%} -->
-  </div>
-  <div class ="nav-mobile-blank" style = "display:none;" id = "blank-overlay">
-
-  </div>
+   
     <div id="root"></div>
     <!--
       This HTML file is a template.

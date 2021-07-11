@@ -1,0 +1,60 @@
+.meme {
+    color:white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:50vh;
+    flex-direction: column;
+    padding:5vh 0vh 5vh 0vh;
+
+}
+.memes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10vh;
+    grid-auto-rows: minmax(50vh, auto);
+    padding: 5vh 1vw 5vh 1vw;
+}
+h2 {
+    font: normal normal 300 1.3rem Montserrat;
+}
+.img {
+    height:auto;
+    width:100%;
+}
+h1 {
+    color:white;
+    font: normal normal 500 3rem 'Ubuntu';  
+    border-bottom:2px solid white;
+    width:40%;
+    padding-bottom:5px;
+    text-align: center;
+}
+.main {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width:100%;
+    min-height:100vh;
+    height: auto;
+}
+@media only screen and (max-width: 1000px) {
+.memes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+.meme {
+    color:white;
+    
+    height:auto;
+    width:90vw;
+    padding:5vh 0vh 5vh 0vh;
+
+}
+.img {
+    width:100%;
+    height:auto;
+}
+}
