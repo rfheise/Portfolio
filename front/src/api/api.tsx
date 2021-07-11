@@ -7,7 +7,7 @@ export interface RequestRoute {
 }
 
 export default class API {
-    public static baseURL:string = ""
+    public static baseURL:string = "http://127.0.0.1:8000"
     public static generateURL(api:string):string {
         return `${API.baseURL}${api}`
     }
