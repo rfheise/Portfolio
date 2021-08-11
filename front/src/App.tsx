@@ -2,7 +2,7 @@
 import './App.css';
 import {useEffect, useState} from 'react';
 import Memes from './components/Meme/Route'
-import ProjectLoader from "./components/Projects/ProjectLoader"
+import Projects from "./components/Projects/Route"
 import Blog from './components/Blog/Blog'
 import {
   BrowserRouter as Router,
@@ -113,8 +113,8 @@ function App() {
             <Blog title = "blog" image = "/null" />
           </Route>
           
-          <Route exact path = "/project">
-            <ProjectLoader route = "co2" />
+          <Route exact path = "/projects">
+            <Projects />
           </Route>
           <Route path = "*">
             {/* temporary fix returns a "component" that just redirects*/}

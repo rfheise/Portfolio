@@ -28,5 +28,11 @@ def projectApi(request,route):
 
 @api_view(["GET"])
 def projectsApi(request):
-        projects = ProjectSerializer(Project.objects.all(), many = True)
+        query = []
+        #santatizing filter 
+        #appropriate filters
+        filters = ["coolness","difficulty","projectStart","projectEnd"]
+        if "filter" in request.GET.keys() and request.GET['filter'] in filters: 
+            query.append("-"+request.GET["filter"])
+        projects = ProjectSerializer(Project.objects.order_by(*query), many = True)
         return Response(projects.data)
