@@ -23,7 +23,10 @@ export interface ProjectInterface {
     //url of project logo
     image:string,
     title:string,
-    children?:any
+    uuid?:string,
+    tagline?:string,
+    children?:any,
+    route?:string,
 }
 
 export default function ProjectWrapper(props:ProjectInterface) {

@@ -113,6 +113,12 @@ class Project(Blog):
     link = models.TextField(default = "", blank = True)
     def __str__(self):
         return self.title
+    def dateFormat(date):
+        return date.strftime("%B %d, %Y")
+    def startFormat(self):
+        return Project.dateFormat(self.projectStart)
+    def endFormat(self):
+        return Project.dateFormat(self.projectEnd)
 
 
 

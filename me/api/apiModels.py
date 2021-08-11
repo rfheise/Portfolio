@@ -12,7 +12,9 @@ class LinkSerializer(serializers.ModelSerializer):
 
 class ProjectSerializer(serializers.ModelSerializer):
     image = serializers.ReadOnlyField(source = "logo.url")
+    projectStart = serializers.ReadOnlyField(source = "startFormat")
+    projectEnd = serializers.ReadOnlyField(source = "endFormat")
     class Meta:
         model = Project 
         fields = ['difficulty','title','image','tagline','coolness',
-            'projectStart','projectEnd','link']
+            'projectStart','projectEnd','link','uuid','route']

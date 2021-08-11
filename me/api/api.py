@@ -32,7 +32,13 @@ def projectsApi(request):
         #santatizing filter 
         #appropriate filters
         filters = ["coolness","difficulty","projectStart","projectEnd"]
+        #checks to make sure filter is valid and won't cause an error
         if "filter" in request.GET.keys() and request.GET['filter'] in filters: 
-            query.append("-"+request.GET["filter"])
+            filt = request.GET['filter']
+            #if filter should be in decending prepend a -
+            if filt == "coolness" or filt == "projectEnd":
+                filt = "-" + filt
+            #add to order by list
+            query.append(filt)
         projects = ProjectSerializer(Project.objects.order_by(*query), many = True)
         return Response(projects.data)

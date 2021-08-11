@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 // import { linkSync } from 'fs';
 import API from './api/api';
+import {Co2View} from './components/Projects/Projects';
 //link interface for creating links
 interface Links {
   short:string
@@ -116,6 +117,9 @@ function App() {
           <Route exact path = "/projects">
             <Projects />
           </Route>
+          <Route exact path = "/projects/co2">
+            <Co2View />
+          </ Route>
           <Route path = "*">
             {/* temporary fix returns a "component" that just redirects*/}
             {() => {

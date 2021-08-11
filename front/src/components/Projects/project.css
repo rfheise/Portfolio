@@ -1,5 +1,40 @@
+.project-display {
+    height:25rem;
+    width:25rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem 1rem 1rem;
+    text-align: center;
+}
+.project-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight:400;
+    color:#242424;
+    font-size: 2rem;
+}
+.project-date {
+    font-family: 'Montserrat', sans-serif;
+    font-weight:300;
+    color:#000000;
+    font-size: 1rem;
+}
+.project-tagline {
+    color:#868686;
+    font-family: 'STIX Two Text', serif;
+}
+.project-logo {
+    max-height: 15rem;
+    max-width: 100%;
+}
+.project-logo-container {
+    height:15rem;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
 
-
+}
 .attribute{
     display:flex;
     flex-direction:column;
