@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import Meme, Link
+from ..models import Meme, Link, Project
 
 class MemeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,3 +9,10 @@ class LinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Link 
         fields = ['short']
+
+class ProjectSerializer(serializers.ModelSerializer):
+    image = serializers.ReadOnlyField(source = "logo.url")
+    class Meta:
+        model = Project 
+        fields = ['difficulty','title','image','tagline','coolness',
+            'projectStart','projectEnd','link']

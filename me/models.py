@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.hashers import make_password
 from django.utils import timezone
 from django.contrib.auth.models import User
+from uuid import uuid4
 # Create your models here.
 class Post(models.Model):
     caption = models.TextField(blank = True, default = "")
@@ -92,3 +93,30 @@ class Meme(models.Model):
     
     def __str__(self):
         return self.caption
+
+class Blog(models.Model):
+    title = models.CharField(max_length=100)
+    route = models.CharField(max_length=256)
+    uuid = models.UUIDField(default = uuid4, unique = True)
+    logo = models.ImageField(upload_to = "projects")
+    tagline = models.CharField(max_length = 256)
+
+class Project(Blog):
+    difficulty = models.TextField(choices = [
+        ("Large","Large"),
+        ("Medium","Medium"),
+        ("Short","Short")
+    ])
+    coolness = models.FloatField()
+    projectStart = models.DateField()
+    projectEnd = models.DateField()
+    link = models.TextField(default = "", blank = True)
+    def __str__(self):
+        return self.title
+
+
+
+class Comments(models.Model):
+    blog = models.ForeignKey(Blog, on_delete = models.CASCADE)
+    name = models.CharField(max_length = 256)
+    comment = models.TextField()

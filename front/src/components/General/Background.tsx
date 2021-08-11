@@ -1,11 +1,17 @@
 import React from 'react'
 
+//image is image url
+//title is title of the page
+// children is the body that goes on top of the image
 interface Props {
     image:string,
     title:string,
     children:any
 }
 
+//used to set a image background 
+//that has main components scroll on top of image
+//mainly just to resue css and html
 function Background(props:Props) {
     return (
         <div className = "overlay-parent">
