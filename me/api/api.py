@@ -22,6 +22,8 @@ def linkApi(request):
     return Response(links.data)
 @api_view(["GET"])
 def projectApi(request,route):
+    #gets a project and sends the json value via the api
+    # 404's if project is not found
     project = get_object_or_404(Project, route = route)
     projectData = ProjectSerializer(project)
     return Response(projectData.data)

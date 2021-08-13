@@ -115,10 +115,14 @@ class Project(Blog):
         return self.title
     def dateFormat(date):
         return date.strftime("%B %Y")
+    #format for start date
     def startFormat(self):
         return Project.dateFormat(self.projectStart)
+    #format for end date
     def endFormat(self):
         now = timezone.now().date()
+        #sets end date to present if start date has occured
+        # and end date is in the future
         if self.projectEnd > now and self.projectStart < now:
             return "Present"
         return Project.dateFormat(self.projectEnd)

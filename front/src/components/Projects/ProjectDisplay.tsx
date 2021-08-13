@@ -3,6 +3,7 @@ import "./project.css"
 import Header from '../Blog/Header'
 import {Link} from "react-router-dom"
 
+//display for displaying project on project select page
 export default function ProjectDisplay(props:ProjectInterface) {
     return (
         <a className = "project-display" href = {`/projects/${props.route}`}>
