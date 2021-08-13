@@ -1,9 +1,13 @@
 import "./blog.css"
 
 interface Props {
+    //src is image src
     src:any,
+    //alt is image alt
     alt:string,
+    //height is image height
     height?:string,
+    //width is image width
     width?:string
 }
 

@@ -7,41 +7,54 @@ import ProjectDisplay from "./ProjectDisplay";
 import API from "../../api/api";
 
 export default function Projects() {
+    //list of projects to query from server
     const [projects, setProjects] = useState<ProjectInterface[]>([])
+    //selection is the value we are sorting by
     const [selection, setSeletion] = useState<string>("Size")
+    //grab all projects initially and whenever
+    //the user changes the sort option
     useEffect(function() {
-        let filter;
+        let sort;
+        //convert drop down filter to accepted api values
         switch(selection) {
             case "Coolness":
-                filter = "coolness";
+                sort = "coolness";
                 break;
             case "Project Start":
-                filter = "projectStart";
+                sort = "projectStart";
                 break;
             case "Project End":
-                filter = "projectEnd";
+                sort = "projectEnd";
                 break;
             default:
-            filter = "difficulty";
+            sort = "difficulty";
         }
         (async function() {
-            let projects = await API.queryJson({route:`projects?filter=${filter}`})
+            //grab all objects sorted by the given query
+            let projects = await API.queryJson({route:`projects?filter=${sort}`})
             for(let i = 0; i < projects.length; i++) {
+                //iterate over all the projects
+                //set image url to be server-side image url
                 projects[i].image = API.generateURL(projects[i].image)
             }
+            //update projects with new projects list
             setProjects(projects)
         })()
     },[selection])
-    //update options
+    //update options for drop down
     let list = ["Project Start","Project End", "Coolness", "Size"]
+    //update function for drop down
     const update = function(selection:string) {
         setSeletion(selection);
     }
+    //style for project container
     let projectContainerStyle:any = {
         display:"grid",
         gridTemplateColumns: "50% 50%",
         width:"90%",     
     }
+    //if device width smaller than 1050 set different container
+    //settings
     if (window.innerWidth < 1050) {
         projectContainerStyle = {
             ...projectContainerStyle,

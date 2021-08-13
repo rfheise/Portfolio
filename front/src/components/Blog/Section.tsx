@@ -5,8 +5,11 @@ export enum SectionFormat {
     column
 }
 interface Props {
+    //children is html inside of the section
     children?:any,
+    //format is format option
     format?:SectionFormat,
+    //title is section header
     title:string,
 }
 

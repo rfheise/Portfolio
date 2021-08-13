@@ -1,16 +1,24 @@
 import "./project.css"
 
 interface Props {
+    //coolness is coolness rating of the project
     coolness:number,
+    //project start is the project start date
     projectStart:string,
+    //project end date
     projectEnd:string,
+    //size of the project
     difficulty:string
 }
 
 interface AttributeProps {
+    //title of the attribute
     title:string,
+    //value of the attribute
     value:string,
 }
+//puts all of the attributes into a list
+//based upon values passed in
 export default function ProjectAttribute(props:Props) {
     return (
         <div className = "attribute-section">
@@ -22,6 +30,8 @@ export default function ProjectAttribute(props:Props) {
     )
     
 }
+//generates an attribute
+//stacks title on top of value
 function Attribute(props:AttributeProps) {
     return (
         <div className = "attribute">

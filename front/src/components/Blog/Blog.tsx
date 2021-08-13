@@ -12,7 +12,7 @@ interface Props {
     image?:any,
 }
 
-
+// creates a Blog skeleton
 export default function Blog(props:Props) {
     return (
         <Background title = "" image = {glasses}>

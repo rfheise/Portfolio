@@ -1,6 +1,7 @@
 import "./blog.css"
 
 interface Props {
+    //children is inner html
     children?:string
 }
 

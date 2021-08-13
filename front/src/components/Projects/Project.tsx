@@ -22,13 +22,20 @@ export interface ProjectInterface {
     link?:string,
     //url of project logo
     image:string,
+    //title of the page
     title:string,
+    //project title
     uuid?:string,
+    //short project description
     tagline?:string,
+    //inner html of wrapper
     children?:any,
+    //route for blog
     route?:string,
 }
 
+//wrapper for project blog
+//generates a Blog skeleton based upon the passed in project
 export default function ProjectWrapper(props:ProjectInterface) {
     return (
         <Blog title = {props.title} image = {props.image}>

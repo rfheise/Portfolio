@@ -9,14 +9,23 @@ interface Props {
     list:any[],
     //update is a function that updates the selection in the parents state
     update(object:any):void,
-    //title of the 
+    //title of the drop down
     title:string,
+    //selection is current selection to be used next to drop down
     selection?:any,
+    //style is any additional style options
     style?:any,
 }
-
+//Uses list to generate drop down
+//When user clicks on an item it passes the item into the 
+//update function prop back to the parent
 function DropDown(props:Props) {
+    //display is boolean to display drop down or not
+    //flips on drop down click
     const [display,setDisplay] = useState<boolean>(false);
+    //update parent updates the parent element
+    //takes in what ever ite1m was pressed on and passes it to 
+    //parent update function
     function updateParent(item:any) {
         function updater() {
             props.update(item)

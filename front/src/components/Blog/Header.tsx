@@ -2,7 +2,9 @@ import "./blog.css"
 
 
 interface Props {
+    //text is header text
     text:string,
+    // style is additonal style options
     style?:any
 }
 

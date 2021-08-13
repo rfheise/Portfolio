@@ -1,7 +1,9 @@
 
 
 interface Props {
+    //link text
     title:string,
+    //route is a tag route
     route:string
 }
 
