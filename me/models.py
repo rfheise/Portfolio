@@ -96,7 +96,7 @@ class Meme(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=100)
-    route = models.CharField(max_length=256)
+    route = models.CharField(max_length=256, unique = True)
     uuid = models.UUIDField(default = uuid4, unique = True)
     logo = models.ImageField(upload_to = "projects")
     tagline = models.CharField(max_length = 256)
@@ -114,10 +114,13 @@ class Project(Blog):
     def __str__(self):
         return self.title
     def dateFormat(date):
-        return date.strftime("%B %d, %Y")
+        return date.strftime("%B %Y")
     def startFormat(self):
         return Project.dateFormat(self.projectStart)
     def endFormat(self):
+        now = timezone.now().date()
+        if self.projectEnd > now and self.projectStart < now:
+            return "Present"
         return Project.dateFormat(self.projectEnd)
 
 

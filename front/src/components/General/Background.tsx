@@ -1,12 +1,17 @@
 import React from 'react'
 
-//image is image url
-//title is title of the page
-// children is the body that goes on top of the image
+
+
+
 interface Props {
+    //image is image url
     image:string,
+    //title is title of the page
     title:string,
-    children:any
+    children:any,
+    style?:any,
+    // children is the body that goes on top of the image
+    className ?: string,
 }
 
 //used to set a image background 
@@ -23,7 +28,7 @@ function Background(props:Props) {
             <div className = "background">
                 <img className = "background-img" src = {props.image} alt = "houston" />
             </div>
-            <div className ="main">
+            <div className = {`main ${props.className}`} style = {props.style}>
                 {props.children}
             </div>
                 

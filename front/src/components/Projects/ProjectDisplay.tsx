@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 
 export default function ProjectDisplay(props:ProjectInterface) {
     return (
-        <div className = "project-display">
+        <a className = "project-display" href = {`/projects/${props.route}`}>
             
             <div className = "project-logo-container">
             <img className = "project-logo" src = {props.image}/>
@@ -19,9 +19,9 @@ export default function ProjectDisplay(props:ProjectInterface) {
             <p className = "project-tagline">
                 {props.tagline}
             </p>
-            <a href = {`/projects/${props.route}`}>
+            <a href = {`/projects/${props.route}`} className = "view-more-button">
                 View More
             </a>
-        </div>
+        </a>
     )
 }
