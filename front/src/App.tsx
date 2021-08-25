@@ -64,11 +64,8 @@ function App() {
               127.0.0.1
           </a>
       </div>
-      <a href = {API.generateURL("/construction")} >
+      <a href = {API.generateURL("/react/projects")} >
           Projects
-      </a>
-      <a  href = {API.generateURL("/blog")}>
-          Blog
       </a>
       <a href = {API.generateURL("/resume")} >
           Resume
@@ -84,11 +81,8 @@ function App() {
       <div className = "cage"></div>
   </div>
   <div className = "nav-mobile" style = {xStyle} id = "mobile-nav">
-      <a href = {API.generateURL("/react/memes")} >
+      <a href = {API.generateURL("/react/projects")} >
           Projects
-      </a>
-      <a href = {API.generateURL("/blog")}>
-          Blog
       </a>
       <a href = {API.generateURL("/resume")} >
           Resume

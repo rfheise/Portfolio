@@ -2,6 +2,7 @@ import Blog from "../Blog/Blog"
 import sunglasses from "./tshirt.png"
 import ProjectAttributes from "./ProjectAttributes"
 import Link from "../Blog/Link"
+import { TechAttribute } from "./TechStack/TechStackAttribute"
 //skeleton for project section
 export interface ProjectSection {
     //section text
@@ -32,6 +33,8 @@ export interface ProjectInterface {
     children?:any,
     //route for blog
     route?:string,
+    //list of tech stacks
+    tech?:TechAttribute[]
 }
 
 //wrapper for project blog

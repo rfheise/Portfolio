@@ -11,6 +11,7 @@
     width:80%;
     min-height: 100vh;
     background-color: #fff;
+    animation:fadein 3s;
 }
 .blog-children {
     width:80%;
@@ -59,5 +60,23 @@
     }
     .blog-text {
         text-indent:0px;
+    }
+}
+@keyframes fadein {
+    0%   { opacity: .25; }
+    100% { opacity: 1; }
+}
+
+@media only screen and (max-width: 700px) {
+    .blog-container {
+        width:100%;
+        animation:fadein 4s;
+    }
+    .blog-children {
+        width:85%;
+    }
+    .blog-link {
+        font-size:1.25rem;
+        word-break: break-all;
     }
 }

@@ -111,6 +111,7 @@ class Project(Blog):
     projectStart = models.DateField()
     projectEnd = models.DateField()
     link = models.TextField(default = "", blank = True)
+    tech = models.ManyToManyField("TechStack")
     def __str__(self):
         return self.title
     def dateFormat(date):
@@ -128,6 +129,12 @@ class Project(Blog):
         return Project.dateFormat(self.projectEnd)
 
 
+class TechStack(models.Model):
+    image = models.ImageField(upload_to = "tech_stack")
+    name = models.TextField()
+    link = models.TextField()
+    def __str__(self):
+        return self.name
 
 class Comments(models.Model):
     blog = models.ForeignKey(Blog, on_delete = models.CASCADE)

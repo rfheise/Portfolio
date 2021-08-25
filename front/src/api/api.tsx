@@ -11,6 +11,7 @@ export interface RequestRoute {
 }
 
 export default class API {
+    // public static baseURL:string = "https://ryanfheise.com"
     public static baseURL:string = "http://127.0.0.1:8000"
     //generates url for given route
     //just concats it with baseURL

@@ -3,6 +3,8 @@ import {useState,useEffect} from "react"
 import Section from '../Blog/Section'
 import Text from '../Blog/Text'
 import API from "../../api/api"
+import TechStackSection from "./TechStack/TechStackSection"
+import TechStackAttribute from "./TechStack/TechStackAttribute"
 interface Props {
     //route on api to fetch server-side data
     route:string,
@@ -28,6 +30,11 @@ export default function ProjectLoader(props:Props) {
             }
             //set image to be image server url route
             result.image = API.generateURL(result.image)
+            if (result.tech) {
+                for(let i = 0; i < result.tech.length; i++) {
+                    result.tech[i].image = API.generateURL(result.tech[i].image)
+                }
+            }
             //set project to be the newly retrieved object
             setProject(result)
         })()
@@ -36,22 +43,12 @@ export default function ProjectLoader(props:Props) {
     if (project) {
         return (
             <Project {...project}>
-                <Section title ="Lorem Ipsum">
-                    <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </Text>
-                </Section>
-                <Section title ="Lorem Ipsum">
-                    <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </Text>
-                </Section>
-                <Section title ="Lorem Ipsum">
-                    <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </Text>
-                </Section>
                 {props.children}
+            {project.tech &&
+                project.tech.length > 0 &&
+                <TechStackSection tech = {project.tech} />
+            }
+            
             </Project>
         )  
     } else {
