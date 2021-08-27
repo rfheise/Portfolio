@@ -38,6 +38,12 @@
     padding:0px 0px 2rem 0px;
     width:70%;
 }
+.blog-ul {
+    list-style-type: square;
+}
+.blog-li {
+    text-align: start;
+}
 .header{
     color:black;
     font-family: 'STIX Two Text', serif;
