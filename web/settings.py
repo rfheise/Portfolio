@@ -26,15 +26,16 @@ SECRET_KEY = ')c=-o$($)=llsl=+$3n-c!e6b^f(#t%sbns^i-wlp41n9^rn__'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['ryanfheise.com','www.ryanfheise.com']
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['ryanfheise.com','www.ryanfheise.com']
+if DEBUG:
+    ALLOWED_HOSTS = ['127.0.0.1']
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # Application definition
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
-# CORS_ORIGIN_ALLOW_ALL= False
+CORS_ORIGIN_ALLOW_ALL= False
 CORS_ORIGIN_WHITELIST=[ 
     'http://localhost:3000',
     'http://127.0.0.1:3000'

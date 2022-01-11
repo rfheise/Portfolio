@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import Meme, Link, Project, TechStack
+from ..models import Meme, Link, Project, QuickBlog, TechStack, QuickBlog, QuickSection
 
 class MemeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,6 +14,17 @@ class TechStackSerializer(serializers.ModelSerializer):
     class Meta:
         model = TechStack 
         fields = ['image',"link","name"]
+class QuickBlogSectionSerializer(serializers.ModelSerializer):
+    id = serializers.ReadOnlyField(source="section_id")
+    class Meta:
+        model = QuickSection 
+        fields = ['type','value','header','id']
+
+class QuickBlogSerializer(serializers.HyperlinkedModelSerializer):
+    sections = QuickBlogSectionSerializer(read_only = True, many = True)
+    class Meta:
+        model = QuickBlog
+        fields = ['title','image','sections']
 class ProjectSerializer(serializers.ModelSerializer):
     image = serializers.ReadOnlyField(source = "logo.url")
     projectStart = serializers.ReadOnlyField(source = "startFormat")

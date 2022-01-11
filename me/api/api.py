@@ -1,5 +1,6 @@
-from ..models import Meme, Link, Project
-from .apiModels import LinkSerializer, MemeSerializer, ProjectSerializer 
+from django.http.response import Http404
+from ..models import Meme, Link, Project, QuickBlog
+from .apiModels import LinkSerializer, MemeSerializer, ProjectSerializer, QuickBlogSerializer 
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -44,3 +45,12 @@ def projectsApi(request):
             query.append(filt)
         projects = ProjectSerializer(Project.objects.order_by(*query), many = True)
         return Response(projects.data)
+    
+@api_view(["GET"])
+def blogApi(request, id):
+    try:
+         blog = get_object_or_404(QuickBlog, uuid = id)
+    except:
+        raise Http404
+    blogData = QuickBlogSerializer(blog)
+    return Response(blogData.data)

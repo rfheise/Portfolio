@@ -4,12 +4,13 @@ import {useEffect, useState} from 'react';
 import Memes from './components/Meme/Route'
 import Projects from "./components/Projects/Route"
 import Blog from './components/Blog/Blog'
+import Christmas from "./components/Christmas/Home"
+import { QuickBlog } from './components/Blog/QuickBlog';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
-  Redirect,
-  Link
+  Navigate
 } from "react-router-dom";
 // import { linkSync } from 'fs';
 import API from './api/api';
@@ -18,6 +19,12 @@ import {ProjectList} from './components/Projects/Projects';
 interface Links {
   short:string
   id:number,
+}
+function NotFound() {
+  useEffect(function(){window.location.replace(API.generateURL("/404"))})
+  return (
+    <div></div>
+  )
 }
 function App() {
   //initializes menu to be a boolean
@@ -99,33 +106,23 @@ function App() {
   <div className ="nav-mobile-blank" style = {xStyle} id = "blank-overlay">
   </div>
     <Router basename = "/react">
-      <Switch>
+      <Routes>
 
-          <Route exact path="/meme">
-            <Memes />
-          </Route>
-          <Route exact path = "/blog">
-            <Blog title = "blog" image = "/null" />
-          </Route>
+          <Route path="/meme" element = {<Memes />} />
+          <Route path = "/blog"
+            element = {<Blog title = "blog" image = "/null" />} />
           
-          <Route exact path = "/projects">
-            <Projects />
-          </Route>
+          <Route path = "/projects" element = {<Projects />} />
+          <Route path = "/christmas" element = {<Christmas />} />
           {ProjectList.map(project => {
             return (
-              <Route exact path = {`/projects/${project.route}`}>
-                <project.component />
-              </Route>
+              <Route path = {`/projects/${project.route}`} key = {project.route}
+                element = {<project.component />} /> 
             )
           })}
-          <Route path = "*">
-            {/* temporary fix returns a "component" that just redirects*/}
-            {() => {
-              window.location.href = API.generateURL("/404")
-              return null;
-          }}
-          </Route>
-      </Switch>
+          <Route path = "/quick_blog/:id" element = {<QuickBlog />} />
+          <Route path = "*" element = {<NotFound />} />
+      </Routes>
   </Router>
   </div>
 

@@ -61,7 +61,7 @@ function DropDown(props:Props) {
                 {props.list.map(item => {
                     return (
                         <div className = "drop-down-item"
-                        onClick = {updateParent(item)}>
+                        onClick = {updateParent(item)} key = {String(item)}>
                             {String(item)}
                         </div>
                     )

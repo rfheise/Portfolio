@@ -15,11 +15,11 @@ interface Props {
 // creates a Blog skeleton
 export default function Blog(props:Props) {
     return (
-        <Background title = "" image = {glasses}>
+        <Background title = {props.title} image = {glasses}>
             <div className = "flex-center blog-container">
             <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap" rel="stylesheet" />
             <div className = "blog-children flex-center">
-            <Image src = {props.image} alt = {props.title} />
+            <Image src = {props.image} alt = "" />
             <Header text = {props.title} style = {{textAlign:"center"}}/>
             {props.children}
             </div>             

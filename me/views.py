@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
-from .models import Post,Link,FileUpload, MLB, Last, Meme
+from .models import Post,Link,FileUpload, MLB, Last, Meme, Christmas
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, Http404
 from random import randint
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import check_password
 
 def server(html):
     def func(request):
@@ -57,3 +58,21 @@ def reactRoute(request, route):
     react = "http://localhost:3000/"
     return redirect(f"{react}{route}")
 
+
+def christmas(request):
+    if request.method == "POST":
+        try:
+            id = request.POST["id"]
+            password = request.POST['password']
+        except:
+            return render(request, "christmas.html", {"code":"Missing Field"})
+        
+        code = Christmas.objects.filter(identifier = id).all()
+        if not code:
+            return render(request, "christmas.html", {"code":"Amazon Code Not Found"})
+        if not check_password(password, code[0].password):
+            return render(request, "christmas.html", {"code":"Invalid Password"})
+        message = f"Amazon Code Is: {code[0].code}"
+        return  render(request, "christmas.html", {"code":message})
+    else:
+        return render(request, "christmas.html")

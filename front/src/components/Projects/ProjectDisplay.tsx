@@ -20,9 +20,9 @@ export default function ProjectDisplay(props:ProjectInterface) {
             <p className = "project-tagline">
                 {props.tagline}
             </p>
-            <a href = {`/react/projects/${props.route}`} className = "view-more-button">
+            <div className = "view-more-button">
                 View More
-            </a>
+            </div>
         </a>
     )
 }

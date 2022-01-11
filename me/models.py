@@ -1,6 +1,7 @@
 from typing import ContextManager
 from django.db import models
 from django.contrib.auth.hashers import make_password
+from django.db.models.fields import related
 from django.utils import timezone
 from django.contrib.auth.models import User
 from uuid import uuid4
@@ -140,3 +141,33 @@ class Comments(models.Model):
     blog = models.ForeignKey(Blog, on_delete = models.CASCADE)
     name = models.CharField(max_length = 256)
     comment = models.TextField()
+
+#for nft christmas gift with giftcard
+class Christmas(models.Model):
+    identifier = models.TextField()
+    password = models.TextField()
+    code = models.TextField()
+
+class QuickBlog(models.Model):
+    uuid = models.UUIDField(default = uuid4)
+    title = models.TextField()
+    image = models.ImageField(upload_to = "quick_blog")
+    def __str__(self):
+        return self.title
+    def url(self):
+        return f"https://ryanfheise.com/react/quick_blog/{self.uuid}"
+    def sections(self):
+        return self.section.all().order_by("section_id")
+        
+class QuickSection(models.Model):
+    blog = models.ForeignKey(QuickBlog, on_delete=models.CASCADE, related_name = "section")
+    type = models.CharField(max_length = 256, choices = [
+        ("image","image"),
+        ("link","link"),
+        ("text","text")
+    ])
+    value = models.TextField()
+    header = models.CharField(max_length=256, blank = True)
+    section_id = models.IntegerField(default = 0)
+    def __str__(self):
+        return f"{self.blog.title} {self.type} {self.section_id}"

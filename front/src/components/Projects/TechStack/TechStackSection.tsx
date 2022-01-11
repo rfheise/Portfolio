@@ -5,7 +5,7 @@ interface Props {
 }
 
 export default function TechStackSection(props:Props) {
-
+    let id = 0;
     return (
         <div className = "blog-section">
             <Header text = "Tech Stack" style = {{
@@ -15,7 +15,7 @@ export default function TechStackSection(props:Props) {
             }}/>
             <div className = "techStackAttributes">
                 {props.tech.map(tech =>  (
-                    <TechStackAttribute {...tech} />
+                    <TechStackAttribute key = {id++} {...tech} />
                 ))}
             </div>
         </div>

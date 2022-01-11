@@ -18,6 +18,7 @@ urlpatterns = [
     path("choose", views.server("choose.html"), name = "chooser"),
     path("mlb",views.mlb, name = "mlb"),
     path("react/<str:route>",views.reactRoute, name = "react"),
+    path("christmas", views.christmas, name = "christmas"),
     #must go last as it is a catch all
     path("<str:link_name>",views.link, name = "linker"),
 ]

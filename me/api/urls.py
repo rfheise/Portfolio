@@ -8,5 +8,7 @@ urlpatterns = [
     #returns data for a specific project
     path("project/<str:route>", api.projectApi),
     #returns list of all projects
-    path("projects", api.projectsApi)
+    path("projects", api.projectsApi),
+    #returns blog attributes
+    path("quick_blog/<str:id>", api.blogApi)
 ]
