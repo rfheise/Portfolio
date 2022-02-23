@@ -1,0 +1,11 @@
+
+
+.blog-header {
+    border-bottom: 2px solid white;
+    padding-top:1rem;
+    padding-bottom: .5rem;
+}
+
+.blog-home-container {
+    justify-content: space-around;
+}

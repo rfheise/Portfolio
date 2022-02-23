@@ -6,6 +6,7 @@ import Projects from "./components/Projects/Route"
 import Blog from './components/Blog/Blog'
 import Christmas from "./components/Christmas/Home"
 import { QuickBlog } from './components/Blog/QuickBlog';
+import BlogHome from './components/BlogHome/Route'
 import {
   BrowserRouter as Router,
   Routes,
@@ -109,8 +110,7 @@ function App() {
       <Routes>
 
           <Route path="/meme" element = {<Memes />} />
-          <Route path = "/blog"
-            element = {<Blog title = "blog" image = "/null" />} />
+          <Route path = "/blog" element = {<BlogHome  />} />
           
           <Route path = "/projects" element = {<Projects />} />
           <Route path = "/christmas" element = {<Christmas />} />

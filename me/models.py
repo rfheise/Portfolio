@@ -160,7 +160,7 @@ class QuickBlog(models.Model):
     def __str__(self):
         return self.title
     def url(self):
-        return f"https://ryanfheise.com/react/quick_blog/{self.uuid}"
+        return f"/react/quick_blog/{self.uuid}"
     def sections(self):
         return self.section.all().order_by("section_id")
         

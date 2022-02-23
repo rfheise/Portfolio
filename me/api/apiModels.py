@@ -23,7 +23,7 @@ class QuickBlogShortSerializer(serializers.ModelSerializer):
     date = serializers.ReadOnlyField(source = "readableDate")
     class Meta:
         model = QuickBlog
-        fields = ['title','image','date','uuid']
+        fields = ['title','image','date','url']
 class QuickBlogSerializer(serializers.HyperlinkedModelSerializer):
     sections = QuickBlogSectionSerializer(read_only = True, many = True)
     class Meta:
