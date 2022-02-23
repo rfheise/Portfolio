@@ -72,7 +72,7 @@ function QuickBlogFunc() {
         })()
     },[])
     if (loading) {
-        return( <Blog title = "Quick Blog">
+        return( <Blog title = "">
 
         </Blog>)
     }

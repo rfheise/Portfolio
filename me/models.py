@@ -152,6 +152,11 @@ class QuickBlog(models.Model):
     uuid = models.UUIDField(default = uuid4)
     title = models.TextField()
     image = models.ImageField(upload_to = "quick_blog")
+    views = models.IntegerField(default = 0)
+    date = models.DateTimeField(default = timezone.now)
+    show = models.BooleanField(default = True)
+    def readableDate(self):
+        return self.date.strftime("%B %d, %Y")
     def __str__(self):
         return self.title
     def url(self):

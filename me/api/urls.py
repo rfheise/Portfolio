@@ -10,5 +10,6 @@ urlpatterns = [
     #returns list of all projects
     path("projects", api.projectsApi),
     #returns blog attributes
-    path("quick_blog/<str:id>", api.blogApi)
+    path("quick_blog/<str:id>", api.blogApi),
+    path("blogs",api.blogQueryApi, name = "blogs")
 ]

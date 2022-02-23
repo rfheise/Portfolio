@@ -1,6 +1,6 @@
 from django.http.response import Http404
-from ..models import Meme, Link, Project, QuickBlog
-from .apiModels import LinkSerializer, MemeSerializer, ProjectSerializer, QuickBlogSerializer 
+from ..models import Meme, Link, Project, QuickBlog, QuickSection
+from .apiModels import LinkSerializer, MemeSerializer, ProjectSerializer, QuickBlogSerializer, QuickBlogShortSerializer 
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -12,6 +12,11 @@ from django.shortcuts import get_object_or_404
 def memeApi(request):
     memes = MemeSerializer(Meme.objects.order_by("-date"),many=True)
     return Response(memes.data)
+
+@api_view(["GET"])
+def blogQueryApi(request):
+    blogs = QuickBlogShortSerializer(QuickBlog.objects.filter(show=True).order_by("-date"),many = True)
+    return Response(blogs.data)
 
 @api_view(["GET"])
 def linkApi(request):
@@ -52,5 +57,7 @@ def blogApi(request, id):
          blog = get_object_or_404(QuickBlog, uuid = id)
     except:
         raise Http404
+    blog.views += 1
+    blog.save()
     blogData = QuickBlogSerializer(blog)
     return Response(blogData.data)

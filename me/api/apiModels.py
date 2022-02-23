@@ -19,12 +19,16 @@ class QuickBlogSectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuickSection 
         fields = ['type','value','header','id']
-
+class QuickBlogShortSerializer(serializers.ModelSerializer):
+    date = serializers.ReadOnlyField(source = "readableDate")
+    class Meta:
+        model = QuickBlog
+        fields = ['title','image','date','uuid']
 class QuickBlogSerializer(serializers.HyperlinkedModelSerializer):
     sections = QuickBlogSectionSerializer(read_only = True, many = True)
     class Meta:
         model = QuickBlog
-        fields = ['title','image','sections']
+        fields = ['title','date','image','sections']
 class ProjectSerializer(serializers.ModelSerializer):
     image = serializers.ReadOnlyField(source = "logo.url")
     projectStart = serializers.ReadOnlyField(source = "startFormat")
