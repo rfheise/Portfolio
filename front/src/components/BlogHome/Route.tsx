@@ -11,7 +11,12 @@ export default function Blogs() {
     useEffect(function() {
         (async function() {
             let req = await API.queryJson({route:"blogs"})
-            setBlogs(req)
+            if (req) {
+                for(let i = 0; i < req.length; i++) {
+                    req[i].image = API.generateURL(req[i].image)
+                }
+                setBlogs(req)
+            }
         })()
     },[])
     return (

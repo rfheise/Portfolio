@@ -54,7 +54,7 @@ def projectsApi(request):
 @api_view(["GET"])
 def blogApi(request, id):
     try:
-         blog = get_object_or_404(QuickBlog, uuid = id)
+         blog = get_object_or_404(QuickBlog, link = id)
     except:
         raise Http404
     blog.views += 1

@@ -128,7 +128,7 @@
             <img onclick = "flipper()" src = "/static/images/x.png" class = "homburger-menu" style = "display:none;" id = "x"/>
             <div class = "header-nav">
                 <a href = "/" >
-                    127.0.0.1
+                    Heise
                 </a>
             </div>
             <a href = "/react/projects" >
@@ -137,9 +137,13 @@
             <a href = "/resume" >
                 Resume
             </a>
-            <a href = "{% url 'homburger' %}">
-                Homburger
+            <a href = "/react/blog">
+                Blog
             </a>
+            <a href = "{% url 'homburger' %}">
+                Personal Feed
+            </a>
+            
             {%for link in links%}
             <a href = "/{{link.short}}">
                 {%if not link.authenticate or request.user.is_authenticated %}
@@ -156,9 +160,13 @@
             <a href = "/resume" >
                 Resume
             </a>
-            <a href = "{% url 'homburger' %}">
-                Homburger
+            <a href = "/react/blog">
+                Blog
             </a>
+            <a href = "{% url 'homburger' %}">
+                Personal Feed
+            </a>
+            
             {%for link in links%}
             <a href = "/{{link.short}}">
                 {%if not link.authenticate or request.user.is_authenticated %}

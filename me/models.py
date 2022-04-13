@@ -50,6 +50,12 @@ class MLB(models.Model):
     winner = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, null = True, default = "")
     def __str__(self):
         return self.team
+    def reset():
+        teams = MLB.objects.all()
+        for team in teams:
+            team.winner = None 
+            team.out = False 
+            team.save()
 class Last(models.Model):
     team = models.ForeignKey(MLB,on_delete=models.CASCADE)
     date = models.DateTimeField(default = timezone.now)
@@ -155,12 +161,13 @@ class QuickBlog(models.Model):
     views = models.IntegerField(default = 0)
     date = models.DateTimeField(default = timezone.now)
     show = models.BooleanField(default = True)
+    link = models.CharField(default = "", max_length=256)
     def readableDate(self):
         return self.date.strftime("%B %d, %Y")
     def __str__(self):
         return self.title
     def url(self):
-        return f"/react/quick_blog/{self.uuid}"
+        return f"/react/quick_blog/{self.link}"
     def sections(self):
         return self.section.all().order_by("section_id")
         

@@ -7,6 +7,7 @@ import Blog from './components/Blog/Blog'
 import Christmas from "./components/Christmas/Home"
 import { QuickBlog } from './components/Blog/QuickBlog';
 import BlogHome from './components/BlogHome/Route'
+import SEOLinks from "./components/SEOLinks/Route"
 import {
   BrowserRouter as Router,
   Routes,
@@ -69,7 +70,7 @@ function App() {
       <img onClick = {flipper} src = {API.generateURL("/static/images/x.png")} className = "homburger-menu" style = {xStyle} id = "x" alt = "close menu"/>
       <div className = "header-nav">
           <a href = "/" >
-              127.0.0.1
+              Heise
           </a>
       </div>
       <a href = {API.generateURL("/react/projects")} >
@@ -78,9 +79,13 @@ function App() {
       <a href = {API.generateURL("/resume")} >
           Resume
       </a>
-      <a href = {API.generateURL("/homburger")}>
-          Homburger
+      <a href = {API.generateURL("/react/blog")}>
+          Blog
       </a>
+      <a href = {API.generateURL("/homburger")}>
+          Personal Feed
+      </a>
+   
       {links.map(link => (
          <a key = {link.id} href = {API.generateURL(`/${link.short}`)}>
          {link.short}
@@ -95,9 +100,13 @@ function App() {
       <a href = {API.generateURL("/resume")} >
           Resume
       </a>
-      <a href = {API.generateURL("/homburger")}>
-          Homburger
+      <a href = {API.generateURL("/react/blog")}>
+          Blog
       </a>
+      <a href = {API.generateURL("/homburger")}>
+          Personal Feed
+      </a>
+      
       {links.map(link => (
          <a key = {link.id} href = {API.generateURL(`/${link.short}`)}>
          {link.short}
@@ -108,10 +117,9 @@ function App() {
   </div>
     <Router basename = "/react">
       <Routes>
-
           <Route path="/meme" element = {<Memes />} />
           <Route path = "/blog" element = {<BlogHome  />} />
-          
+          <Route path = "/" element = {<SEOLinks />} />
           <Route path = "/projects" element = {<Projects />} />
           <Route path = "/christmas" element = {<Christmas />} />
           {ProjectList.map(project => {

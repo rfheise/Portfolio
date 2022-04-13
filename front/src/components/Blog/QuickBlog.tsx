@@ -72,9 +72,7 @@ function QuickBlogFunc() {
         })()
     },[])
     if (loading) {
-        return( <Blog title = "">
-
-        </Blog>)
+        return( <div></div>)
     }
     return (
         <Blog title = {blog.title} image = {blog.image?

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import{Helmet} from 'react-helmet';
 
 
 
@@ -20,7 +20,9 @@ interface Props {
 function Background(props:Props) {
     return (
         <div className = "overlay-parent">
-        <title>{props.title}</title>
+        <Helmet>
+            <title>{props.title}</title>
+        </Helmet>
         <div className = "main-overlay">
             <div className = "overlay">
 
