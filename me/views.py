@@ -37,10 +37,14 @@ def mlb(request):
     if not Last.objects.filter(user = user).exists():
         team = randomizer(MLB.objects.filter(out = False).all())
         Last.objects.create(team = team,user = user)  
+    #select stadium team
+    if not Last.objects.filter(stadium = True).exists():
+        Last.objects.create(team = MLB.random(), user = user, stadium = True)
+    stadium = Last.objects.filter(stadium = True).first()
     total = MLB.objects.filter(out = True).count()
-    last = Last.objects.order_by("-date")
+    last = Last.objects.filter(stadium = False).order_by("-date")
     scores = MLB.objects.filter(out = True, winner = user).count()
-    return render(request,"mlb.html", {"team":team,"last":last, "score":scores, "total":total})
+    return render(request,"mlb.html", {"team":team,"last":last, "score":scores, "total":total, "stadium":stadium})
     
 # def file_server_password(request,file_route):
 #     if request.method == "POST":

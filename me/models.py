@@ -5,6 +5,7 @@ from django.db.models.fields import related
 from django.utils import timezone
 from django.contrib.auth.models import User
 from uuid import uuid4
+import random
 # Create your models here.
 class Post(models.Model):
     caption = models.TextField(blank = True, default = "")
@@ -56,11 +57,17 @@ class MLB(models.Model):
             team.winner = None 
             team.out = False 
             team.save()
+    def random():
+        teams = MLB.objects.all()
+        return teams[random.randint(0, len(teams) - 1)]
 class Last(models.Model):
     team = models.ForeignKey(MLB,on_delete=models.CASCADE)
     date = models.DateTimeField(default = timezone.now)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
+    stadium = models.BooleanField(default = False)
     def __str__(self):
+        if self.stadium:
+            return f"Stadium: {self.team}"
         return f"{self.user} {self.team}"
 # class HiddenFile(models.Model):
 #     media = models.TextField()

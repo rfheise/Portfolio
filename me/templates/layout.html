@@ -145,11 +145,12 @@
             </a>
             
             {%for link in links%}
+            {%if not link.authenticate or request.user.is_authenticated %}
             <a href = "/{{link.short}}">
-                {%if not link.authenticate or request.user.is_authenticated %}
+
                 {{link.short}}
-                {%endif%}
             </a>
+            {%endif%}
             {%endfor%}
             <div class = "cage"></div>
         </div>
@@ -168,11 +169,11 @@
             </a>
             
             {%for link in links%}
+            {%if not link.authenticate or request.user.is_authenticated %}
             <a href = "/{{link.short}}">
-                {%if not link.authenticate or request.user.is_authenticated %}
                 {{link.short}}
-                {%endif%}
             </a>
+            {%endif%}
             {%endfor%}
         </div>
         <div class ="nav-mobile-blank" style = "display:none;" id = "blank-overlay">
