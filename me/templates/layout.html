@@ -140,9 +140,6 @@
             <a href = "/react/blog">
                 Blog
             </a>
-            <a href = "{% url 'homburger' %}">
-                Personal Feed
-            </a>
             
             {%for link in links%}
             {%if not link.authenticate or request.user.is_authenticated %}
@@ -163,9 +160,6 @@
             </a>
             <a href = "/react/blog">
                 Blog
-            </a>
-            <a href = "{% url 'homburger' %}">
-                Personal Feed
             </a>
             
             {%for link in links%}

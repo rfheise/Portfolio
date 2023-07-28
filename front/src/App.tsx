@@ -82,9 +82,6 @@ function App() {
       <a href = {API.generateURL("/react/blog")}>
           Blog
       </a>
-      <a href = {API.generateURL("/homburger")}>
-          Personal Feed
-      </a>
    
       {links.map(link => (
          <a key = {link.id} href = {API.generateURL(`/${link.short}`)}>
@@ -102,9 +99,6 @@ function App() {
       </a>
       <a href = {API.generateURL("/react/blog")}>
           Blog
-      </a>
-      <a href = {API.generateURL("/homburger")}>
-          Personal Feed
       </a>
       
       {links.map(link => (
