@@ -137,9 +137,6 @@
             <a href = "/resume" >
                 Resume
             </a>
-            <a href = "/react/blog">
-                Blog
-            </a>
             
             {%for link in links%}
             {%if not link.authenticate or request.user.is_authenticated %}
@@ -157,9 +154,6 @@
             </a>
             <a href = "/resume" >
                 Resume
-            </a>
-            <a href = "/react/blog">
-                Blog
             </a>
             
             {%for link in links%}
